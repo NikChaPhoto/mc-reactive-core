@@ -1,7 +1,7 @@
 import ContainerComponent from '../assets/core/components/ContainerComponent.js';
 import ButtonComponent from '../assets/core/components/ButtonComponent.js';
 import { ButtonType } from '../assets/core/enums/ButtonType.js';
-import Button from '../assets/core/elements/Button.js';
+import Button from '../assets/core/elements/forms/Button.js';
 
 const navButton = (text, active = false) => {
     return new ButtonComponent().setConfig({

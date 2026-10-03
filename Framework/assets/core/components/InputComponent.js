@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Input from '../elements/Input.js';
+import Input from '../elements/forms/Input.js';
 import { InputType } from '../enums/InputType.js';
 
 export default class InputComponent extends Component {

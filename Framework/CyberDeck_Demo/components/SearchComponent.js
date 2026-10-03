@@ -3,7 +3,7 @@ import InputComponent from '../../assets/core/components/InputComponent.js';
 import { InputType } from '../../assets/core/enums/InputType.js';
 import Div from '../../assets/core/elements/layout/Div.js';
 import Span from '../../assets/core/elements/typography/Span.js';
-import Button from '../../assets/core/elements/Button.js';
+import Button from '../../assets/core/elements/forms/Button.js';
 
 export default class SearchComponent extends Component {
     constructor(context = null) {
