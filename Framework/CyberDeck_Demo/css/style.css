@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    background: #101114;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    min-height: 100vh;
+    padding: 60px;
+    box-sizing: border-box;
+}
+
+.card {
+    padding: 24px;
+    margin-bottom: 16px;
+    background: #1c1f26;
+    border: 1px solid #30343d;
+    border-radius: 12px;
+}
+
+.card__title {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card__text {
+    display: block;
+    color: #aeb4c0;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}

@@ -1,0 +1,230 @@
+{
+  "test_method": "Local source modules loaded as browser Blob ES modules into an in-memory document. No network navigation. Chromium policy blocks all URL navigation; normal HTTP delivery was not exercised.",
+  "browser": "Chromium 144.0.7559.96",
+  "unit_tests": {
+    "total": 26,
+    "passed": 26,
+    "failed": 0,
+    "results": [
+      {
+        "name": "Div und Span kapseln die passenden DOM-Knoten",
+        "passed": true
+      },
+      {
+        "name": "Button ist standardmäßig kein Submit-Button",
+        "passed": true
+      },
+      {
+        "name": "text() behandelt HTML als Text und ersetzt bestehende Kinder",
+        "passed": true
+      },
+      {
+        "name": "append() akzeptiert Wrapper, native Nodes, Text, Zahlen und null",
+        "passed": true
+      },
+      {
+        "name": "Eine Component wird nicht versehentlich als [object Object] angehängt",
+        "passed": true
+      },
+      {
+        "name": "appendTo() akzeptiert einen Wrapper als Ziel",
+        "passed": true
+      },
+      {
+        "name": "Klassen setzen, entfernen und mit/ohne force umschalten",
+        "passed": true
+      },
+      {
+        "name": "attr() bewahrt aria false; null entfernt das Attribut",
+        "passed": true
+      },
+      {
+        "name": "disabled() setzt die echte boolesche Button-Eigenschaft",
+        "passed": true
+      },
+      {
+        "name": "Standalone on()/off() entfernen denselben Handler",
+        "passed": true
+      },
+      {
+        "name": "remove() trennt nur den Node, nicht den Event-Listener",
+        "passed": true
+      },
+      {
+        "name": "mount() baut einmal und hängt denselben Node erneut ein",
+        "passed": true
+      },
+      {
+        "name": "mount() kann einen gebauten Baum in einen anderen Container verschieben",
+        "passed": true
+      },
+      {
+        "name": "mount() akzeptiert DocumentFragment",
+        "passed": true
+      },
+      {
+        "name": "Ungültiges mount-Ziel baut oder zerstört nichts",
+        "passed": true
+      },
+      {
+        "name": "destroy() ist mehrfach sicher; die Instanz ist danach nicht mountbar",
+        "passed": true
+      },
+      {
+        "name": "Component.listen() räumt auch Listener auf window auf",
+        "passed": true
+      },
+      {
+        "name": "Component.listen() akzeptiert once und verhindert fremde Signals",
+        "passed": true
+      },
+      {
+        "name": "Fehlgeschlagenes build() räumt registrierte Listener auf",
+        "passed": true
+      },
+      {
+        "name": "build() ohne UIElement wird mit verständlichem Fehler abgelehnt",
+        "passed": true
+      },
+      {
+        "name": "Counter: Plus, Minus und Reset aktualisieren denselben Wert-Node",
+        "passed": true
+      },
+      {
+        "name": "Zwei Counter besitzen unabhängigen State",
+        "passed": true
+      },
+      {
+        "name": "Nach destroy() reagieren aufbewahrte Counter-Buttons nicht mehr",
+        "passed": true
+      },
+      {
+        "name": "Counter kann vor mount() einen Start-State erhalten",
+        "passed": true
+      },
+      {
+        "name": "Konfiguration und Quelldaten werden nicht umgeschrieben",
+        "passed": true
+      },
+      {
+        "name": "Ungültige Konfiguration und nicht-endliche Zahlen werden abgelehnt",
+        "passed": true
+      }
+    ]
+  },
+  "keyboard_and_focus": true,
+  "value_node_reused": true,
+  "destroy_recreate_cycles": 10,
+  "element_interactions": true,
+  "app_destroy_cleanup": true,
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 1120,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "counterVisible": true
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "counterVisible": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "counterVisible": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "counterVisible": true
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "counterVisible": true
+    }
+  ],
+  "console_errors": [],
+  "http_asset_checks_via_python": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "mime": "text/html"
+    },
+    {
+      "path": "main.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "showcase/App.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "showcase/showcase.css",
+      "status": 200,
+      "mime": "text/css"
+    },
+    {
+      "path": "src/components/Counter.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "src/core/Component.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "src/core/UIElement.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "src/elements/Button.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "src/elements/Div.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "src/elements/Span.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "src/index.js",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "styles/framework.css",
+      "status": 200,
+      "mime": "text/css"
+    },
+    {
+      "path": "tests/index.html",
+      "status": 200,
+      "mime": "text/html"
+    },
+    {
+      "path": "tests/tests.js",
+      "status": 200,
+      "mime": "text/javascript"
+    }
+  ]
+}

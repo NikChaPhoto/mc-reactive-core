@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <title>UI / LAB - Browser-Tests</title>
+    <style>
+        :root { color-scheme: dark; font: 16px/1.65 system-ui, sans-serif; background: #11171b; color: #eff3f1; }
+        body { max-width: 880px; margin: 36px auto; padding: 0 22px; }
+        a, .pass { color: #bcf48c; }
+        .fail { color: #ffb6b6; }
+        li { padding: 8px 0; border-bottom: 1px solid #344047; }
+        #summary { padding: 18px; border: 1px solid #344047; border-radius: 8px; }
+        code { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <a href="../">Zurück zur Showcase</a>
+    <h1>Browser-Tests</h1>
+    <p>Echte DOM-Tests. Kein Testpaket, kein Build-Schritt. Zum Wiederholen die Seite neu laden.</p>
+    <p id="summary" role="status">Tests laufen …</p>
+    <ol id="results"></ol>
+    <div id="fixtures" hidden></div>
+    <script type="module" src="./tests.js"></script>
+</body>
+</html>
