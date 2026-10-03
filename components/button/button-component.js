@@ -1,16 +1,17 @@
 import Button from "../../components/elements/button.js";
 
-export default class ButtonComponent {
+export default class ButtonComponent extends Button {
     constructor(context = {}) {
+        super();
         this.context = context;
-        this.node = new Button(); // erzeugt <custom-button>
-        if (context.label) {
-            // this.node.setAttribute('label', context.label);
-            this.node.textContent = context.label;
-        }
+        this.node = null;
     }
 
     build() {
+        this.node = new Button();
+        if (this.context.label) {
+            this.node.textContent = this.context.label;
+        }
         return this.node;
     }
 }
