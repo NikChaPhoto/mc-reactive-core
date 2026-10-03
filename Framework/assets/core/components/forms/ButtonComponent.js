@@ -1,5 +1,5 @@
-import Component from '../Component.js';
-import Button from '../elements/forms/Button.js';
+import Component from '../../Component.js';
+import Button from '../../elements/forms/Button.js';
 
 export default class ButtonComponent extends Component {
     constructor(context = null) {

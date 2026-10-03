@@ -1,5 +1,5 @@
 import Component from '../../assets/core/Component.js';
-import InputComponent from '../../assets/core/components/InputComponent.js';
+import InputComponent from '../../assets/core/components/forms/InputComponent.js';
 import { InputType } from '../../assets/core/enums/InputType.js';
 import Div from '../../assets/core/elements/layout/Div.js';
 import Span from '../../assets/core/elements/typography/Span.js';

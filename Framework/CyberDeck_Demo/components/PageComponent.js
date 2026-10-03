@@ -1,5 +1,5 @@
-import ContainerComponent from '../../assets/core/components/ContainerComponent.js';
-import HeaderComponent from '../../assets/core/components/HeaderComponent.js';
+import ContainerComponent from '../../assets/core/components/layout/ContainerComponent.js';
+import HeaderComponent from '../../assets/core/components/layout/HeaderComponent.js';
 import CardComponent from './CardComponent.js';
 import SearchComponent from './SearchComponent.js';
 

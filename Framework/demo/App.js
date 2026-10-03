@@ -1,5 +1,5 @@
-import ContainerComponent from '../assets/core/components/ContainerComponent.js';
-import ButtonComponent from '../assets/core/components/ButtonComponent.js';
+import ContainerComponent from '../assets/core/components/layout/ContainerComponent.js';
+import ButtonComponent from '../assets/core/components/forms/ButtonComponent.js';
 import { ButtonType } from '../assets/core/enums/ButtonType.js';
 import Button from '../assets/core/elements/forms/Button.js';
 

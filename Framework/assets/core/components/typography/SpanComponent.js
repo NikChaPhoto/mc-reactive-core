@@ -1,14 +1,13 @@
-import Component from '../Component.js';
-import HGroup from '../elements/layout/HGroup.js';
+import Component from '../../Component.js';
+import Span from '../../elements/typography/Span.js';
 
-export default class HGroupComponent extends Component {
+export default class SpanComponent extends Component {
     constructor(context = null) {
         super();
         this.context = context;
     }
-
     build() {
-        const node = new HGroup();
+        const node = new Span();
         const config = this.getConfig();
         this.applyConfigToNode(node, config);
         return node;

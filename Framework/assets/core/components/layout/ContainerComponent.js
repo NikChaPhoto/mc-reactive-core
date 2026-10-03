@@ -1,13 +1,14 @@
-import Component from '../Component.js';
-import Header from '../elements/layout/Header.js';
+import Component from '../../Component.js';
+import Div from '../../elements/layout/Div.js';
 
-export default class HeaderComponent extends Component {
+export default class ContainerComponent extends Component {
     constructor(context = null) {
         super();
         this.context = context;
     }
+
     build() {
-        const node = new Header();
+        const node = new Div();
         const config = this.getConfig();
         this.applyConfigToNode(node, config);
         return node;
