@@ -1,5 +1,5 @@
-import Element from "../../Element";
-import {HTMLTag} from "../../enums/HTMLTag";
+import Element from "../../Element.js";
+import {HTMLTag} from "../../enums/HTMLTag.js";
 
 export default class Map extends Element {
     constructor() {
