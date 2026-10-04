@@ -40,7 +40,6 @@ export class HttpClient {
 
         const buffer = await response.arrayBuffer();
 
-        // 2. Читаем заголовок от сервера
         let serverMime = response.headers.get('content-type');
         console.log(`[HttpClient] Заголовок от сервера: "${serverMime}"`);
 
@@ -60,7 +59,6 @@ export class HttpClient {
         };
     }
     async request(url) {
-        // Если передан относительный путь, объединяем с baseUrl класса
         const fullUrl = url.startsWith('http') ? url : `${this.baseUrl}${url}`;
 
         const res = await fetch(fullUrl);
