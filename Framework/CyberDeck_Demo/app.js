@@ -27,7 +27,6 @@ performanceMonitor.mount();
 const page = new PageComponent();
 page.mount(appDiv);
 
-// Создание шапки таблицы
 const table = new Table();
 const headerRow = new Tr();
 table.appendChild(headerRow);
@@ -43,7 +42,6 @@ appDiv.appendChild(table);
 
 const httpClient = new HttpClient('http://localhost:3000');
 
-// Вспомогательная функция для принудительного скачивания
 function triggerDirectDownload(url, fileName, isBlob = false) {
     const a = document.createElement('a');
     a.href = url;
@@ -52,7 +50,6 @@ function triggerDirectDownload(url, fileName, isBlob = false) {
     a.click();
     a.remove();
 
-    // Если скачивали Blob, освобождаем память через небольшую паузу
     if (isBlob && url.startsWith('blob:')) {
         setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
@@ -75,14 +72,11 @@ async function renderFilesTable() {
         files.forEach(file => {
             const row = new Tr();
 
-            // 1. Имя файла
             const nameCell = new Td();
             nameCell.textContent = file.name;
 
-            // 2. Действия
             const actionsCell = new Td();
 
-            // --- КНОПКА 1: PREVIEW ---
             const previewBtn = document.createElement('button');
             previewBtn.textContent = 'Preview';
             previewBtn.style.marginRight = '8px';
@@ -103,7 +97,6 @@ async function renderFilesTable() {
                             previewWindow.location.href = result.objectUrl;
                         }
                     } else {
-                        // Фолбэк: если формат не поддерживается браузером
                         if (previewWindow) previewWindow.close();
                         triggerDirectDownload(result.objectUrl, file.name, true);
                     }
@@ -113,23 +106,18 @@ async function renderFilesTable() {
                 }
             };
 
-            // --- КНОПКА 2: DOWNLOAD ---
             const downloadBtn = document.createElement('button');
             downloadBtn.textContent = 'Download';
 
             downloadBtn.onclick = async () => {
                 try {
-                    // 1. Делаем запрос к серверу
                    // const response = await fetch(`http://localhost:3000${encodeURI(file.path)}`);
                     const downloadUrl = `http://localhost:3000${encodeURI(file.path)}`//?download=force`;
 
                     triggerOnlyDirectDownload(downloadUrl, file.name);
                     //if (!response.ok) throw new Error(`HTTP error ${response.status}`);
                    // response.download(response.url, re)
-                    // // 2. Вычитываем сырые байты файла
                     // const buffer = await response.arrayBuffer();
-                    //
-                    // // 3. Создаем Blob с принудительным типом application/octet-stream
                     // const forcedBlob = new Blob([buffer], { type: 'application/octet-stream' });
                     // const blobUrl = URL.createObjectURL(forcedBlob);
                     //
