@@ -9,6 +9,10 @@ import Th from "../assets/core/elements/tables/Th.js";
 import Tr from "../assets/core/elements/tables/Tr.js";
 import Td from "../assets/core/elements/tables/Td.js";
 import Anchor from "../assets/core/elements/interactive/Anchor.js";
+import Button from "../assets/core/elements/forms/Button.js";
+import LabelComponent from "../assets/core/components/forms/LabelComponent.js";
+import InputComponent from "../assets/core/components/forms/InputComponent.js";
+import ContainerComponent from "../assets/core/components/layout/ContainerComponent.js";
 
 const appDiv = document.getElementById('app');
 
@@ -17,6 +21,12 @@ PNode.textContent = 'This is a paragraph element created using the P class.';
 const H1Node = new H1();
 H1Node.textContent = 'This is an H1 element created using the H1 class.';
 const HGroupNode = new HGroup();
+const labelComponent = new LabelComponent().setConfig({text: 'Enter your name:', for: 'nameInput', classes: ['form-label']});
+const inputComponent = new InputComponent().setConfig({text: 'Enter your name:', id: 'nameInput', classes: ['form-control', 'w-25']});
+const containerComponent = new ContainerComponent().setConfig({classes: ['pt-2']});
+containerComponent.mount(appDiv);
+labelComponent.mount(containerComponent.node);
+inputComponent.mount(containerComponent.node);
 HGroupNode.appendChild(H1Node);
 HGroupNode.appendChild(PNode);
 appDiv.appendChild(HGroupNode);
@@ -38,7 +48,7 @@ tHeadActions.textContent = 'Actions';
 
 headerRow.appendChild(tHeadName);
 headerRow.appendChild(tHeadActions);
-appDiv.appendChild(table);
+page.node.appendChild(table);
 
 const httpClient = new HttpClient('http://localhost:3000');
 
@@ -55,15 +65,6 @@ function triggerDirectDownload(url, fileName, isBlob = false) {
     }
 }
 
-function triggerOnlyDirectDownload(url, fileName) {
-    const a = new Anchor();
-    a.href = url;
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-}
-
 async function renderFilesTable() {
     try {
         const data = await httpClient.request('/api/db');
@@ -77,7 +78,8 @@ async function renderFilesTable() {
 
             const actionsCell = new Td();
 
-            const previewBtn = document.createElement('button');
+            const previewBtn = new Button();
+            previewBtn.classList.add('btn','btn-secondary');
             previewBtn.textContent = 'Preview';
             previewBtn.style.marginRight = '8px';
 
@@ -106,23 +108,30 @@ async function renderFilesTable() {
                 }
             };
 
-            const downloadBtn = document.createElement('button');
+            const downloadBtn = new Button();
+            console.log({downloadBtn});
+            downloadBtn.classList.add('btn','btn-primary');
             downloadBtn.textContent = 'Download';
 
             downloadBtn.onclick = async () => {
                 try {
                    // const response = await fetch(`http://localhost:3000${encodeURI(file.path)}`);
-                    const downloadUrl = `http://localhost:3000${encodeURI(file.path)}`//?download=force`;
+                    const response = await fetch(`http://localhost:3000${encodeURI(file.path)}`);//?download=force`;
+                    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
 
-                    triggerOnlyDirectDownload(downloadUrl, file.name);
-                    //if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-                   // response.download(response.url, re)
-                    // const buffer = await response.arrayBuffer();
-                    // const forcedBlob = new Blob([buffer], { type: 'application/octet-stream' });
-                    // const blobUrl = URL.createObjectURL(forcedBlob);
-                    //
-                    // // 4. Передаем сгенерированный blob-URL в функцию скачивания
-                    //triggerDirectDownload(blobUrl, file.name, true);
+                    console.log('Real Content-Type:', response.headers.get('content-type'));
+                    console.log('Real Content-Disposition:', response.headers.get('content-disposition'));
+                    const buffer = await response.arrayBuffer();
+                    const forcedBlob = new Blob([buffer], { type: 'application/octet-stream' });
+                    const blobUrl = URL.createObjectURL(forcedBlob);
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    link.download = file.name || 'downloaded-file';
+                    document.body.appendChild(link);
+                    link.click();
+
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(blobUrl);
                 } catch (err) {
                     console.error('Ошибка при скачивании:', err);
                 }
@@ -139,4 +148,4 @@ async function renderFilesTable() {
         console.error('Error fetching files:', error);
     }
 }
-renderFilesTable();
+await renderFilesTable();
