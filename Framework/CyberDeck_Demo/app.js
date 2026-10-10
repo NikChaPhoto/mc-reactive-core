@@ -68,6 +68,7 @@ function triggerDirectDownload(url, fileName, isBlob = false) {
 async function renderFilesTable() {
     try {
         const data = await httpClient.request('/api/db');
+
         const files = data.files || [];
 
         files.forEach(file => {
@@ -84,7 +85,6 @@ async function renderFilesTable() {
             previewBtn.style.marginRight = '8px';
 
             previewBtn.onclick = async () => {
-                // Открываем вкладку синхронно (защита от Popup Blocker)
                 const previewWindow = window.open('about:blank', '_blank');
                 if (previewWindow) {
                     previewWindow.document.write('<p style="font-family:sans-serif; padding:20px;">Загрузка предпросмотра...</p>');
@@ -115,8 +115,7 @@ async function renderFilesTable() {
 
             downloadBtn.onclick = async () => {
                 try {
-                   // const response = await fetch(`http://localhost:3000${encodeURI(file.path)}`);
-                    const response = await fetch(`http://localhost:3000${encodeURI(file.path)}`);//?download=force`;
+                    const response = await fetch(`http://localhost:3000${encodeURI(file.path)}`);
                     if (!response.ok) throw new Error(`HTTP error ${response.status}`);
 
                     console.log('Real Content-Type:', response.headers.get('content-type'));
