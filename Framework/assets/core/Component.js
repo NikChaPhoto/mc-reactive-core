@@ -1,4 +1,4 @@
-import { ComponentState } from '../core/enums/ComponentState.js'
+import { ComponentState } from './enums/ComponentState.js';
 
 export default class Component {
     constructor() {
@@ -129,6 +129,7 @@ export default class Component {
                 node.dataset[key] = value;
             }
         }
+        if(config.id) node.id = config.id;
         if (config.components) {
             this.applyComponentToNode(node, config.components)
         }
